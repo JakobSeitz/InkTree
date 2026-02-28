@@ -118,6 +118,22 @@ def get_json_files(root_dir: str | Path) -> list[Path]:
     return sorted(root.rglob("*.json"))
 
 
+def count_json_samples(root_dir: str | Path) -> int:
+    """Count raw samples in JSON files (sample0/sample1/... entries)."""
+    total = 0
+    for json_path in get_json_files(root_dir):
+        try:
+            with open(json_path, encoding="utf-8") as f:
+                obj = json.load(f)
+        except Exception:
+            continue
+        if not isinstance(obj, dict):
+            continue
+        sample_keys = [k for k in obj if isinstance(k, str) and k.startswith("sample")]
+        total += len(sample_keys) if sample_keys else 1
+    return total
+
+
 def load_json_dataset(root_dir: str | Path, max_samples: int = None) -> list[RowNode]:
     """Load all JSON samples under root_dir into RowNode graphs.
 
