@@ -1,0 +1,51 @@
+# Raw datasets (not distributed)
+data/
+
+# Paper (pre-publication)
+paper/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# AI / project-specific
+.claude/
+
+# macOS
+.DS_Store
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.out
+*.synctex.gz
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Outdated / single-dataset benchmark artifacts
+stats/crohme2023_test_benchmark.*
+stats/crohme2023_test_stats.*
+stats/inkml_phase_breakdown.json
+plots/

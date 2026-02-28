@@ -1,0 +1,391 @@
+[
+  {
+    "name": "CROHME 2023 Test",
+    "source": "inkml",
+    "sampled": false,
+    "sample_n": null,
+    "n_files": 2300,
+    "n_graphs": 2300,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 28951846,
+      "mb": 28.9518,
+      "kb_per_sample": 12.5878,
+      "load_time_s": 1.315,
+      "ms_per_sample": 0.5717
+    },
+    "inktree_gz": {
+      "total_bytes": 8056907,
+      "mb": 8.0569,
+      "kb_per_sample": 3.503,
+      "load_time_s": 0.5357,
+      "ms_per_sample": 0.2329,
+      "speedup": 2.455,
+      "size_ratio": 0.2783
+    }
+  },
+  {
+    "name": "CROHME 2019 Test",
+    "source": "inkml",
+    "sampled": false,
+    "sample_n": null,
+    "n_files": 1199,
+    "n_graphs": 1199,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 9268167,
+      "mb": 9.2682,
+      "kb_per_sample": 7.7299,
+      "load_time_s": 0.6055,
+      "ms_per_sample": 0.505
+    },
+    "inktree_gz": {
+      "total_bytes": 2214005,
+      "mb": 2.214,
+      "kb_per_sample": 1.8465,
+      "load_time_s": 0.1844,
+      "ms_per_sample": 0.1538,
+      "speedup": 3.284,
+      "size_ratio": 0.2389
+    }
+  },
+  {
+    "name": "CROHME 2016 Val",
+    "source": "inkml",
+    "sampled": false,
+    "sample_n": null,
+    "n_files": 1147,
+    "n_graphs": 1147,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 9283833,
+      "mb": 9.2838,
+      "kb_per_sample": 8.094,
+      "load_time_s": 0.5414,
+      "ms_per_sample": 0.472
+    },
+    "inktree_gz": {
+      "total_bytes": 2323364,
+      "mb": 2.3234,
+      "kb_per_sample": 2.0256,
+      "load_time_s": 0.1885,
+      "ms_per_sample": 0.1644,
+      "speedup": 2.871,
+      "size_ratio": 0.2503
+    }
+  },
+  {
+    "name": "CROHME 2023 Val",
+    "source": "inkml",
+    "sampled": false,
+    "sample_n": null,
+    "n_files": 555,
+    "n_graphs": 555,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 7229337,
+      "mb": 7.2293,
+      "kb_per_sample": 13.0258,
+      "load_time_s": 0.2294,
+      "ms_per_sample": 0.4133
+    },
+    "inktree_gz": {
+      "total_bytes": 2008658,
+      "mb": 2.0087,
+      "kb_per_sample": 3.6192,
+      "load_time_s": 0.1799,
+      "ms_per_sample": 0.3241,
+      "speedup": 1.275,
+      "size_ratio": 0.2778
+    }
+  },
+  {
+    "name": "CROHME Real Train",
+    "source": "inkml",
+    "sampled": false,
+    "sample_n": null,
+    "n_files": 12024,
+    "n_graphs": 12010,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 113043684,
+      "mb": 113.0437,
+      "kb_per_sample": 9.4125,
+      "load_time_s": 5.5826,
+      "ms_per_sample": 0.4648
+    },
+    "inktree_gz": {
+      "total_bytes": 28156702,
+      "mb": 28.1567,
+      "kb_per_sample": 2.3444,
+      "load_time_s": 2.6644,
+      "ms_per_sample": 0.2218,
+      "speedup": 2.095,
+      "size_ratio": 0.2491
+    }
+  },
+  {
+    "name": "MW+ Test",
+    "source": "inkml",
+    "sampled": false,
+    "sample_n": null,
+    "n_files": 5739,
+    "n_graphs": 5739,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 55518207,
+      "mb": 55.5182,
+      "kb_per_sample": 9.6738,
+      "load_time_s": 3.0752,
+      "ms_per_sample": 0.5358
+    },
+    "inktree_gz": {
+      "total_bytes": 17614590,
+      "mb": 17.6146,
+      "kb_per_sample": 3.0693,
+      "load_time_s": 1.1954,
+      "ms_per_sample": 0.2083,
+      "speedup": 2.572,
+      "size_ratio": 0.3173
+    }
+  },
+  {
+    "name": "MW+ Val",
+    "source": "inkml",
+    "sampled": false,
+    "sample_n": null,
+    "n_files": 9336,
+    "n_graphs": 9336,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 85523640,
+      "mb": 85.5236,
+      "kb_per_sample": 9.1606,
+      "load_time_s": 5.0672,
+      "ms_per_sample": 0.5428
+    },
+    "inktree_gz": {
+      "total_bytes": 26209291,
+      "mb": 26.2093,
+      "kb_per_sample": 2.8073,
+      "load_time_s": 1.7408,
+      "ms_per_sample": 0.1865,
+      "speedup": 2.911,
+      "size_ratio": 0.3065
+    }
+  },
+  {
+    "name": "MW+ Symbols",
+    "source": "inkml",
+    "sampled": false,
+    "sample_n": null,
+    "n_files": 6276,
+    "n_graphs": 6276,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 11815817,
+      "mb": 11.8158,
+      "kb_per_sample": 1.8827,
+      "load_time_s": 0.4801,
+      "ms_per_sample": 0.0765
+    },
+    "inktree_gz": {
+      "total_bytes": 2390601,
+      "mb": 2.3906,
+      "kb_per_sample": 0.3809,
+      "load_time_s": 0.1088,
+      "ms_per_sample": 0.0173,
+      "speedup": 4.414,
+      "size_ratio": 0.2023
+    }
+  },
+  {
+    "name": "MW+ Train",
+    "source": "inkml",
+    "sampled": true,
+    "sample_n": 2000,
+    "n_files": 2000,
+    "n_graphs": 2000,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 20092350,
+      "mb": 20.0923,
+      "kb_per_sample": 10.0462,
+      "load_time_s": 1.7385,
+      "ms_per_sample": 0.8693
+    },
+    "inktree_gz": {
+      "total_bytes": 6057916,
+      "mb": 6.0579,
+      "kb_per_sample": 3.029,
+      "load_time_s": 0.4492,
+      "ms_per_sample": 0.2246,
+      "speedup": 3.87,
+      "size_ratio": 0.3015
+    }
+  },
+  {
+    "name": "MW+ Synthetic",
+    "source": "inkml",
+    "sampled": true,
+    "sample_n": 2000,
+    "n_files": 2000,
+    "n_graphs": 2000,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 29814213,
+      "mb": 29.8142,
+      "kb_per_sample": 14.9071,
+      "load_time_s": 1.4816,
+      "ms_per_sample": 0.7408
+    },
+    "inktree_gz": {
+      "total_bytes": 8044933,
+      "mb": 8.0449,
+      "kb_per_sample": 4.0225,
+      "load_time_s": 0.5465,
+      "ms_per_sample": 0.2733,
+      "speedup": 2.711,
+      "size_ratio": 0.2698
+    }
+  },
+  {
+    "name": "DeepWriting",
+    "source": "original",
+    "source_format_label": ".json",
+    "sampled": false,
+    "sample_n": null,
+    "n_total": 5159,
+    "n_graphs": 5159,
+    "source_format": {
+      "format": ".json",
+      "total_bytes_full": 722184434,
+      "total_bytes_rep": 722184434,
+      "mb_full": 722.1844,
+      "mb_rep": 722.1844,
+      "kb_per_sample": 139.966,
+      "load_time_s": 2.6097,
+      "ms_per_sample": 0.5059
+    },
+    "inktree_gz": {
+      "total_bytes": 6201812,
+      "mb": 6.2018,
+      "kb_per_sample": 1.2022,
+      "load_time_s": 1.3949,
+      "ms_per_sample": 0.2704,
+      "speedup": 1.871,
+      "size_ratio": 0.0086
+    }
+  },
+  {
+    "name": "IAMonDB",
+    "source": "original",
+    "source_format_label": ".json",
+    "sampled": false,
+    "sample_n": null,
+    "n_total": 11242,
+    "n_graphs": 11242,
+    "source_format": {
+      "format": ".json",
+      "total_bytes_full": 2063633708,
+      "total_bytes_rep": 2063633708,
+      "mb_full": 2063.6337,
+      "mb_rep": 2063.6337,
+      "kb_per_sample": 183.579,
+      "load_time_s": 7.8693,
+      "ms_per_sample": 0.7000
+    },
+    "inktree_gz": {
+      "total_bytes": 27950638,
+      "mb": 27.9506,
+      "kb_per_sample": 2.4863,
+      "load_time_s": 2.9971,
+      "ms_per_sample": 0.2666,
+      "speedup": 2.626,
+      "size_ratio": 0.0135
+    }
+  },
+  {
+    "name": "Detexify",
+    "source": "original",
+    "source_format_label": ".sql",
+    "sampled": false,
+    "sample_n": null,
+    "n_total": 210454,
+    "n_graphs": 210454,
+    "source_format": {
+      "format": ".sql",
+      "total_bytes_full": 1058200000,
+      "total_bytes_rep": 1058200000,
+      "mb_full": 1058.2,
+      "mb_rep": 1058.2,
+      "kb_per_sample": 5.0282,
+      "load_time_s": 114.72,
+      "ms_per_sample": 0.5451
+    },
+    "inktree_gz": {
+      "total_bytes": 78140000,
+      "mb": 78.14,
+      "kb_per_sample": 0.3713,
+      "load_time_s": 6.22,
+      "ms_per_sample": 0.0296,
+      "speedup": 18.444,
+      "size_ratio": 0.0738
+    }
+  },
+  {
+    "name": "Unipen",
+    "source": "original",
+    "source_format_label": ".tgz",
+    "sampled": false,
+    "sample_n": null,
+    "n_total": 79452,
+    "n_graphs": 79452,
+    "source_format": {
+      "format": ".tgz",
+      "total_bytes_full": 155775380,
+      "total_bytes_rep": 155775380,
+      "mb_full": 155.7754,
+      "mb_rep": 155.7754,
+      "kb_per_sample": 1.9606,
+      "load_time_s": 11.8573,
+      "ms_per_sample": 0.1492
+    },
+    "inktree_gz": {
+      "total_bytes": 9254402,
+      "mb": 9.2544,
+      "kb_per_sample": 0.1165,
+      "load_time_s": 1.147,
+      "ms_per_sample": 0.0144,
+      "speedup": 10.338,
+      "size_ratio": 0.0594
+    }
+  },
+  {
+    "name": "CROHME+ Synth.",
+    "source": "inkml",
+    "sampled": true,
+    "sample_n": 2000,
+    "n_files": 2000,
+    "n_graphs": 2000,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 9456547,
+      "mb": 9.4565,
+      "kb_per_sample": 4.7283,
+      "load_time_s": 0.671,
+      "ms_per_sample": 0.3355
+    },
+    "inktree_gz": {
+      "total_bytes": 2191760,
+      "mb": 2.1918,
+      "kb_per_sample": 1.0959,
+      "load_time_s": 0.1954,
+      "ms_per_sample": 0.0977,
+      "speedup": 3.435,
+      "size_ratio": 0.2318
+    },
+    "n_total_files": 124325,
+    "full_source_bytes": 579251953
+  }
+]

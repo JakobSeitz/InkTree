@@ -1,0 +1,32 @@
+
+InkTree Multi-Dataset Benchmark – Summary
+===============================================================================================
+
+[A+B] InkML-based datasets (CROHME + MathWriting+)
+
+Dataset                     N   Source MB  Source ms   InkTree MB  InkTree ms    Size×  Speed×
+-----------------------------------------------------------------------------------------------
+CROHME 2023 Test         2300       28.95      0.572         8.06       0.233    0.278    2.46x
+CROHME 2019 Test         1199        9.27      0.505         2.21       0.154    0.239    3.28x
+CROHME 2016 Val          1147        9.28      0.472         2.32       0.164    0.250    2.87x
+CROHME 2023 Val           555        7.23      0.413         2.01       0.324    0.278    1.27x
+CROHME Real Train       12010      113.04      0.465        28.16       0.222    0.249    2.10x
+CROHME+ Synth.*2000      2000        9.46      0.336         2.19       0.098    0.232    3.44x
+MW+ Test                 5739       55.52      0.536        17.61       0.208    0.317    2.57x
+MW+ Val                  9336       85.52      0.543        26.21       0.186    0.306    2.91x
+MW+ Symbols              6276       11.82      0.076         2.39       0.017    0.202    4.41x
+MW+ Train*2000           2000       20.09      0.869         6.06       0.225    0.301    3.87x
+MW+ Synthetic*2000       2000       29.81      0.741         8.04       0.273    0.270    2.71x
+
+[C] Other datasets (original source formats)
+
+Dataset                     N         Fmt  Source MB  Source ms   InkTree MB  InkTree ms    Size×  Speed×
+-----------------------------------------------------------------------------------------------
+DeepWriting              5159       .json     722.18      0.506         6.20       0.270    0.009    1.87x
+IAMonDB                 11242       .json    2063.63      0.700        27.95       0.267    0.014    2.63x
+Detexify               210454        .sql    1058.20      0.545        78.14       0.030    0.074   18.44x
+Unipen                  79452        .tgz     155.78      0.149         9.25       0.014    0.059   10.34x
+
+* = sampled from larger split
+Size× = InkTree size / source size (lower is better)
+Speed× = source load time / InkTree load time (higher is better)
