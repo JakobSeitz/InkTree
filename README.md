@@ -59,7 +59,7 @@ Each sample is one JSON object stored in a gzip-compressed JSONL file (`.inktree
 | `underover` | Over + underscript | `base`, `under`, `over` |
 | `any` | Undefined relation | `children: [...]` |
 | `noisy` | Noise/artifact | `children: [...]` |
-| `line` | Horizontal line | — |
+| `line` | Multi-line container (groups rows into a multi-line expression, e.g. step-by-step calculation) | `children: [...]` (each child is one line, typically a `row`) |
 
 The `type` field is an open identifier: unknown types decode gracefully via a generic fallback, allowing schema extension without a version bump.
 
