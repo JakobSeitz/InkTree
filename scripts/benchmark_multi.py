@@ -56,9 +56,9 @@ sys.path.insert(0, str(ROOT))
 
 from datasets.crohme import CrohmeFileManager
 from datasets.mathwriting import MathWritingFileManager
-from datasets.json_loader import load_json_dataset, get_json_files
+from datasets.json_loader import load_json_dataset, get_json_files, count_json_samples
 from datasets.detexify_loader import load_detexify, count_detexify
-from datasets.unipen_loader import load_unipen
+from datasets.unipen_loader import load_unipen, count_unipen_segments
 from ink.graph import get_relation_graphs_from_files
 from inktree import save_inktree, load_inktree_graphs
 
@@ -215,8 +215,10 @@ def benchmark_original_dataset(
         print(f"    WARNING: no graphs loaded for {name}")
         return {"name": name, "source": "original", "n_graphs": 0, "error": "no graphs"}
 
-    # Scale reported bytes proportionally when sampled
-    if sampled and n_total and n_total > 0:
+    # Report source size for the compared sample universe:
+    # - sampled subsets (explicit cap), or
+    # - parser-filtered subsets (n != n_total)
+    if n_total and n_total > 0 and (sampled or n != n_total):
         source_bytes_rep = int(source_bytes * n / n_total)
     else:
         source_bytes_rep = source_bytes
@@ -245,7 +247,7 @@ def benchmark_original_dataset(
             "total_bytes_rep": source_bytes_rep,
             "mb_full": round(source_bytes / 1e6, 4),
             "mb_rep": round(source_bytes_rep / 1e6, 4),
-            "kb_per_sample": round(source_bytes / (n_total or n) / 1000, 4),
+            "kb_per_sample": round(source_bytes_rep / n / 1000, 4),
             "load_time_s": round(t_source, 4),
             "ms_per_sample": round(t_source / n * 1000, 4),
         },
@@ -348,6 +350,7 @@ try:
     dw_root = ROOT / "data" / "Deepwriting Dataset"
     dw_json_files = get_json_files(dw_root)
     dw_bytes = sum(f.stat().st_size for f in dw_json_files)
+    dw_total = count_json_samples(dw_root)
 
     def _load_deepwriting():
         return load_json_dataset(dw_root)
@@ -357,7 +360,7 @@ try:
         source_bytes=dw_bytes,
         loader_fn=_load_deepwriting,
         inktree_out=INKTREE_DIR / "deepwriting.inktree.jsonl.gz",
-        n_total=None,
+        n_total=dw_total,
         sample_n=None,
     )
     results.append(r)
@@ -370,6 +373,7 @@ try:
     iam_root = ROOT / "data" / "Iamondb Dataset"
     iam_json_files = get_json_files(iam_root)
     iam_bytes = sum(f.stat().st_size for f in iam_json_files)
+    iam_total = count_json_samples(iam_root)
 
     def _load_iamondb():
         return load_json_dataset(iam_root)
@@ -379,7 +383,7 @@ try:
         source_bytes=iam_bytes,
         loader_fn=_load_iamondb,
         inktree_out=INKTREE_DIR / "iamondb.inktree.jsonl.gz",
-        n_total=None,
+        n_total=iam_total,
         sample_n=None,
     )
     results.append(r)
@@ -410,13 +414,14 @@ except Exception as e:
 try:
     tgz_path = ROOT / "data" / "unipen-CDROM-train_r01_v07.tgz"
     tgz_bytes = tgz_path.stat().st_size
+    n_unipen_raw = count_unipen_segments()
 
     r = benchmark_original_dataset(
         "Unipen", ".tgz",
         source_bytes=tgz_bytes,
         loader_fn=load_unipen,
         inktree_out=INKTREE_DIR / "unipen.inktree.jsonl.gz",
-        n_total=None,    # exact count comes from the loader
+        n_total=n_unipen_raw,
         sample_n=None,   # load ALL samples (streaming loader, no seek penalty)
     )
     results.append(r)

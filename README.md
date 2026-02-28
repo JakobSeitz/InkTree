@@ -14,7 +14,9 @@ InkTree addresses this by:
 - Co-locating strokes, structure, and relation roles in one self-contained object
 - Replacing positional child conventions with named semantic keys (`numer`/`denom`, `base`/`sub`/`sup`, ...)
 - Using short canonical type strings (`sym`, `frac`, `row`, ...) instead of verbose class names
-- Rounding coordinates to four decimals and omitting null fields
+- Omitting dataset-level metadata (coordinate units, writer demographics, license) from per-sample data; these belong in companion documentation
+
+See [FORMAT_COMPARISON.md](FORMAT_COMPARISON.md) for a field-by-field comparison of what each source format contains versus what InkTree supports.
 
 ---
 
@@ -117,7 +119,7 @@ Evaluated across 15 configurations spanning 7 dataset families. Source sizes and
 | Detexify† | .sql | 210,454 | 1,058.2 | 0.545 | 78.1 | 0.030 | 7.4% | 18.4× |
 | Unipen† | .tgz | 79,452 | 155.8 | 0.149 | 9.3 | 0.014 | 5.9% | 10.3× |
 
-\* Random sample from larger split. † Full split. Size = InkTree / source (lower is better). † JSON source size includes metadata fields beyond stroke data.
+\* Random sample from larger split. † Full split. Size = InkTree / source (lower is better). Source MB for DeepWriting and Unipen is the full archive/folder size; the paper normalizes these to the matched sample universe (588 MB and 57 MB respectively). JSON source sizes (DeepWriting, IAMonDB) include metadata fields beyond stroke data not stored in InkTree.
 
 ---
 

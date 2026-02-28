@@ -146,3 +146,23 @@ def load_unipen(max_samples: int = None) -> list[SymbolNode]:
                 nodes.append(SymbolNode(trace_group=tg))
 
     return nodes
+
+
+def count_unipen_segments() -> int:
+    """Count raw CHARACTER segments declared in Unipen segment files."""
+    if not UNIPEN_TGZ.exists():
+        return 0
+    total = 0
+    with tarfile.open(str(UNIPEN_TGZ), 'r:gz') as tar:
+        for member in tar:
+            if not member.isfile() or not member.name.endswith('.dat'):
+                continue
+            if '/data/' not in member.name or '/include/' in member.name:
+                continue
+            raw = tar.extractfile(member)
+            if raw is None:
+                continue
+            text = raw.read().decode('latin1', errors='ignore')
+            _, segments = _parse_segment_dat(text)
+            total += len(segments)
+    return total
