@@ -11,16 +11,16 @@
       "total_bytes": 28951846,
       "mb": 28.9518,
       "kb_per_sample": 12.5878,
-      "load_time_s": 1.315,
-      "ms_per_sample": 0.5717
+      "load_time_s": 1.3247,
+      "ms_per_sample": 0.5759
     },
     "inktree_gz": {
       "total_bytes": 8056907,
       "mb": 8.0569,
       "kb_per_sample": 3.503,
-      "load_time_s": 0.5357,
-      "ms_per_sample": 0.2329,
-      "speedup": 2.455,
+      "load_time_s": 0.5449,
+      "ms_per_sample": 0.2369,
+      "speedup": 2.431,
       "size_ratio": 0.2783
     }
   },
@@ -36,16 +36,16 @@
       "total_bytes": 9268167,
       "mb": 9.2682,
       "kb_per_sample": 7.7299,
-      "load_time_s": 0.6055,
-      "ms_per_sample": 0.505
+      "load_time_s": 0.7308,
+      "ms_per_sample": 0.6095
     },
     "inktree_gz": {
       "total_bytes": 2214005,
       "mb": 2.214,
       "kb_per_sample": 1.8465,
-      "load_time_s": 0.1844,
-      "ms_per_sample": 0.1538,
-      "speedup": 3.284,
+      "load_time_s": 0.1806,
+      "ms_per_sample": 0.1506,
+      "speedup": 4.047,
       "size_ratio": 0.2389
     }
   },
@@ -61,16 +61,16 @@
       "total_bytes": 9283833,
       "mb": 9.2838,
       "kb_per_sample": 8.094,
-      "load_time_s": 0.5414,
-      "ms_per_sample": 0.472
+      "load_time_s": 0.6388,
+      "ms_per_sample": 0.557
     },
     "inktree_gz": {
       "total_bytes": 2323364,
       "mb": 2.3234,
       "kb_per_sample": 2.0256,
-      "load_time_s": 0.1885,
-      "ms_per_sample": 0.1644,
-      "speedup": 2.871,
+      "load_time_s": 0.1898,
+      "ms_per_sample": 0.1655,
+      "speedup": 3.366,
       "size_ratio": 0.2503
     }
   },
@@ -86,16 +86,16 @@
       "total_bytes": 7229337,
       "mb": 7.2293,
       "kb_per_sample": 13.0258,
-      "load_time_s": 0.2294,
-      "ms_per_sample": 0.4133
+      "load_time_s": 0.2773,
+      "ms_per_sample": 0.4996
     },
     "inktree_gz": {
       "total_bytes": 2008658,
       "mb": 2.0087,
       "kb_per_sample": 3.6192,
-      "load_time_s": 0.1799,
-      "ms_per_sample": 0.3241,
-      "speedup": 1.275,
+      "load_time_s": 0.1813,
+      "ms_per_sample": 0.3267,
+      "speedup": 1.529,
       "size_ratio": 0.2778
     }
   },
@@ -111,17 +111,42 @@
       "total_bytes": 113043684,
       "mb": 113.0437,
       "kb_per_sample": 9.4125,
-      "load_time_s": 5.5826,
-      "ms_per_sample": 0.4648
+      "load_time_s": 6.3237,
+      "ms_per_sample": 0.5265
     },
     "inktree_gz": {
       "total_bytes": 28156702,
       "mb": 28.1567,
       "kb_per_sample": 2.3444,
-      "load_time_s": 2.6644,
-      "ms_per_sample": 0.2218,
-      "speedup": 2.095,
+      "load_time_s": 2.7008,
+      "ms_per_sample": 0.2249,
+      "speedup": 2.341,
       "size_ratio": 0.2491
+    }
+  },
+  {
+    "name": "CROHME+ Synth.",
+    "source": "inkml",
+    "sampled": true,
+    "sample_n": 2000,
+    "n_files": 2000,
+    "n_graphs": 2000,
+    "source_format": {
+      "format": "InkML",
+      "total_bytes": 9456547,
+      "mb": 9.4565,
+      "kb_per_sample": 4.7283,
+      "load_time_s": 0.6851,
+      "ms_per_sample": 0.3425
+    },
+    "inktree_gz": {
+      "total_bytes": 2191760,
+      "mb": 2.1918,
+      "kb_per_sample": 1.0959,
+      "load_time_s": 0.1281,
+      "ms_per_sample": 0.0641,
+      "speedup": 5.346,
+      "size_ratio": 0.2318
     }
   },
   {
@@ -136,16 +161,16 @@
       "total_bytes": 55518207,
       "mb": 55.5182,
       "kb_per_sample": 9.6738,
-      "load_time_s": 3.0752,
-      "ms_per_sample": 0.5358
+      "load_time_s": 3.9433,
+      "ms_per_sample": 0.6871
     },
     "inktree_gz": {
       "total_bytes": 17614590,
       "mb": 17.6146,
       "kb_per_sample": 3.0693,
-      "load_time_s": 1.1954,
-      "ms_per_sample": 0.2083,
-      "speedup": 2.572,
+      "load_time_s": 1.4039,
+      "ms_per_sample": 0.2446,
+      "speedup": 2.809,
       "size_ratio": 0.3173
     }
   },
@@ -161,16 +186,16 @@
       "total_bytes": 85523640,
       "mb": 85.5236,
       "kb_per_sample": 9.1606,
-      "load_time_s": 5.0672,
-      "ms_per_sample": 0.5428
+      "load_time_s": 4.8245,
+      "ms_per_sample": 0.5168
     },
     "inktree_gz": {
       "total_bytes": 26209291,
       "mb": 26.2093,
       "kb_per_sample": 2.8073,
-      "load_time_s": 1.7408,
-      "ms_per_sample": 0.1865,
-      "speedup": 2.911,
+      "load_time_s": 1.7248,
+      "ms_per_sample": 0.1848,
+      "speedup": 2.797,
       "size_ratio": 0.3065
     }
   },
@@ -186,16 +211,16 @@
       "total_bytes": 11815817,
       "mb": 11.8158,
       "kb_per_sample": 1.8827,
-      "load_time_s": 0.4801,
-      "ms_per_sample": 0.0765
+      "load_time_s": 1.653,
+      "ms_per_sample": 0.2634
     },
     "inktree_gz": {
       "total_bytes": 2390601,
       "mb": 2.3906,
       "kb_per_sample": 0.3809,
-      "load_time_s": 0.1088,
-      "ms_per_sample": 0.0173,
-      "speedup": 4.414,
+      "load_time_s": 0.1266,
+      "ms_per_sample": 0.0202,
+      "speedup": 13.056,
       "size_ratio": 0.2023
     }
   },
@@ -208,20 +233,20 @@
     "n_graphs": 2000,
     "source_format": {
       "format": "InkML",
-      "total_bytes": 20092350,
-      "mb": 20.0923,
-      "kb_per_sample": 10.0462,
-      "load_time_s": 1.7385,
-      "ms_per_sample": 0.8693
+      "total_bytes": 20255273,
+      "mb": 20.2553,
+      "kb_per_sample": 10.1276,
+      "load_time_s": 1.0102,
+      "ms_per_sample": 0.5051
     },
     "inktree_gz": {
-      "total_bytes": 6057916,
-      "mb": 6.0579,
-      "kb_per_sample": 3.029,
-      "load_time_s": 0.4492,
-      "ms_per_sample": 0.2246,
-      "speedup": 3.87,
-      "size_ratio": 0.3015
+      "total_bytes": 6093100,
+      "mb": 6.0931,
+      "kb_per_sample": 3.0466,
+      "load_time_s": 0.3514,
+      "ms_per_sample": 0.1757,
+      "speedup": 2.875,
+      "size_ratio": 0.3008
     }
   },
   {
@@ -233,19 +258,19 @@
     "n_graphs": 2000,
     "source_format": {
       "format": "InkML",
-      "total_bytes": 29814213,
-      "mb": 29.8142,
-      "kb_per_sample": 14.9071,
-      "load_time_s": 1.4816,
-      "ms_per_sample": 0.7408
+      "total_bytes": 29194364,
+      "mb": 29.1944,
+      "kb_per_sample": 14.5972,
+      "load_time_s": 1.3894,
+      "ms_per_sample": 0.6947
     },
     "inktree_gz": {
-      "total_bytes": 8044933,
-      "mb": 8.0449,
-      "kb_per_sample": 4.0225,
-      "load_time_s": 0.5465,
-      "ms_per_sample": 0.2733,
-      "speedup": 2.711,
+      "total_bytes": 7877858,
+      "mb": 7.8779,
+      "kb_per_sample": 3.9389,
+      "load_time_s": 0.5287,
+      "ms_per_sample": 0.2644,
+      "speedup": 2.628,
       "size_ratio": 0.2698
     }
   },
@@ -255,26 +280,26 @@
     "source_format_label": ".json",
     "sampled": false,
     "sample_n": null,
-    "n_total": 5159,
+    "n_total": 6333,
     "n_graphs": 5159,
     "source_format": {
       "format": ".json",
       "total_bytes_full": 722184434,
-      "total_bytes_rep": 722184434,
+      "total_bytes_rep": 588307199,
       "mb_full": 722.1844,
-      "mb_rep": 722.1844,
-      "kb_per_sample": 139.966,
-      "load_time_s": 2.6097,
-      "ms_per_sample": 0.5059
+      "mb_rep": 588.3072,
+      "kb_per_sample": 114.0351,
+      "load_time_s": 2.6466,
+      "ms_per_sample": 0.513
     },
     "inktree_gz": {
       "total_bytes": 6201812,
       "mb": 6.2018,
-      "kb_per_sample": 1.2022,
-      "load_time_s": 1.3949,
-      "ms_per_sample": 0.2704,
-      "speedup": 1.871,
-      "size_ratio": 0.0086
+      "kb_per_sample": 1.2021,
+      "load_time_s": 1.0089,
+      "ms_per_sample": 0.1956,
+      "speedup": 2.623,
+      "size_ratio": 0.0105
     }
   },
   {
@@ -291,17 +316,17 @@
       "total_bytes_rep": 2063633708,
       "mb_full": 2063.6337,
       "mb_rep": 2063.6337,
-      "kb_per_sample": 183.579,
-      "load_time_s": 7.8693,
-      "ms_per_sample": 0.7000
+      "kb_per_sample": 183.5646,
+      "load_time_s": 7.8316,
+      "ms_per_sample": 0.6966
     },
     "inktree_gz": {
       "total_bytes": 27950638,
       "mb": 27.9506,
       "kb_per_sample": 2.4863,
-      "load_time_s": 2.9971,
-      "ms_per_sample": 0.2666,
-      "speedup": 2.626,
+      "load_time_s": 2.7533,
+      "ms_per_sample": 0.2449,
+      "speedup": 2.844,
       "size_ratio": 0.0135
     }
   },
@@ -315,21 +340,21 @@
     "n_graphs": 210454,
     "source_format": {
       "format": ".sql",
-      "total_bytes_full": 1058200000,
-      "total_bytes_rep": 1058200000,
-      "mb_full": 1058.2,
-      "mb_rep": 1058.2,
-      "kb_per_sample": 5.0282,
-      "load_time_s": 114.72,
-      "ms_per_sample": 0.5451
+      "total_bytes_full": 1058249469,
+      "total_bytes_rep": 1058249469,
+      "mb_full": 1058.2495,
+      "mb_rep": 1058.2495,
+      "kb_per_sample": 5.0284,
+      "load_time_s": 116.0172,
+      "ms_per_sample": 0.5513
     },
     "inktree_gz": {
-      "total_bytes": 78140000,
-      "mb": 78.14,
+      "total_bytes": 78142329,
+      "mb": 78.1423,
       "kb_per_sample": 0.3713,
-      "load_time_s": 6.22,
-      "ms_per_sample": 0.0296,
-      "speedup": 18.444,
+      "load_time_s": 5.1799,
+      "ms_per_sample": 0.0246,
+      "speedup": 22.398,
       "size_ratio": 0.0738
     }
   },
@@ -339,53 +364,26 @@
     "source_format_label": ".tgz",
     "sampled": false,
     "sample_n": null,
-    "n_total": 79452,
+    "n_total": 216724,
     "n_graphs": 79452,
     "source_format": {
       "format": ".tgz",
       "total_bytes_full": 155775380,
-      "total_bytes_rep": 155775380,
+      "total_bytes_rep": 57107959,
       "mb_full": 155.7754,
-      "mb_rep": 155.7754,
-      "kb_per_sample": 1.9606,
-      "load_time_s": 11.8573,
-      "ms_per_sample": 0.1492
+      "mb_rep": 57.108,
+      "kb_per_sample": 0.7188,
+      "load_time_s": 11.0804,
+      "ms_per_sample": 0.1395
     },
     "inktree_gz": {
-      "total_bytes": 9254402,
+      "total_bytes": 9254388,
       "mb": 9.2544,
       "kb_per_sample": 0.1165,
-      "load_time_s": 1.147,
-      "ms_per_sample": 0.0144,
-      "speedup": 10.338,
-      "size_ratio": 0.0594
+      "load_time_s": 0.8518,
+      "ms_per_sample": 0.0107,
+      "speedup": 13.008,
+      "size_ratio": 0.1621
     }
-  },
-  {
-    "name": "CROHME+ Synth.",
-    "source": "inkml",
-    "sampled": true,
-    "sample_n": 2000,
-    "n_files": 2000,
-    "n_graphs": 2000,
-    "source_format": {
-      "format": "InkML",
-      "total_bytes": 9456547,
-      "mb": 9.4565,
-      "kb_per_sample": 4.7283,
-      "load_time_s": 0.671,
-      "ms_per_sample": 0.3355
-    },
-    "inktree_gz": {
-      "total_bytes": 2191760,
-      "mb": 2.1918,
-      "kb_per_sample": 1.0959,
-      "load_time_s": 0.1954,
-      "ms_per_sample": 0.0977,
-      "speedup": 3.435,
-      "size_ratio": 0.2318
-    },
-    "n_total_files": 124325,
-    "full_source_bytes": 579251953
   }
 ]
