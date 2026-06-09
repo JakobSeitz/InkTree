@@ -83,8 +83,11 @@ def load_detexify(max_samples: int = None) -> list[SymbolNode]:
                 pts = [stroke]
             x = [float(p[0]) for p in pts]
             y = [float(p[1]) for p in pts]
+            t = [float(p[2]) for p in pts if len(p) > 2] or None
+            if t and len(t) != len(x):
+                t = None
             if x:
-                traces.append(Trace(x, y, inkml_id=i))
+                traces.append(Trace(x, y, t=t, inkml_id=i))
         if traces:
             tg = TraceGroup(traces=traces, label=key)
             nodes.append(SymbolNode(trace_group=tg))

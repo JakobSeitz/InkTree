@@ -82,7 +82,7 @@ def _decode_node(d: dict, parent=None) -> RelationNode:
 
     if node_type == "root":
         root_strokes = [_decode_stroke(s) for s in d.get("strokes", [])]
-        tg = TraceGroup(traces=root_strokes, label="\\sqrt")
+        tg = TraceGroup(traces=root_strokes, label="\\root")
         node = RootNode(parent=parent, trace_group=tg)
         inner = _decode_node(d.get("inner"), parent=node)
         index = _decode_node(d.get("index"), parent=node)
@@ -115,7 +115,9 @@ def _decode_node(d: dict, parent=None) -> RelationNode:
         return node
 
     if node_type == "line":
-        return LineNode(parent=parent)
+        node = LineNode(parent=parent)
+        node.children = [_decode_node(c, parent=node) for c in d.get("children", [])]
+        return node
 
     # fallback: any / unknown
     node = AnyRelationNode(parent=parent)

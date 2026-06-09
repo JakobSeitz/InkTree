@@ -12,6 +12,7 @@ Character strokes are identified by index ranges into the flat point list.
 
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -68,19 +69,19 @@ def _sample_to_row_node(sample: dict) -> RowNode | None:
                     continue
                 ch = ch_obj.get("char", "") or ""
                 ranges = ch_obj.get("ranges", [])
-                char_xs, char_ys = [], []
+                traces = []
                 for rng in ranges:
+                    rng_xs, rng_ys = [], []
                     for idx in rng:
                         i = int(idx)
                         if 0 <= i < n_pts:
-                            char_xs.append(xs[i])
-                            char_ys.append(ys[i])
-                if char_xs:
-                    tg = TraceGroup(
-                        traces=[Trace(char_xs, char_ys, inkml_id=trace_id)],
-                        label=ch,
-                    )
-                    trace_id += 1
+                            rng_xs.append(xs[i])
+                            rng_ys.append(ys[i])
+                    if rng_xs:
+                        traces.append(Trace(rng_xs, rng_ys, inkml_id=trace_id))
+                        trace_id += 1
+                if traces:
+                    tg = TraceGroup(traces=traces, label=ch)
                     symbols.append(SymbolNode(trace_group=tg))
         if symbols:
             return RowNode(children=symbols)
@@ -118,19 +119,20 @@ def get_json_files(root_dir: str | Path) -> list[Path]:
     return sorted(root.rglob("*.json"))
 
 
+_SAMPLE_KEY_RE = re.compile(rb'"sample\d+"\s*:')
+
+
 def count_json_samples(root_dir: str | Path) -> int:
     """Count raw samples in JSON files (sample0/sample1/... entries)."""
     total = 0
     for json_path in get_json_files(root_dir):
         try:
-            with open(json_path, encoding="utf-8") as f:
-                obj = json.load(f)
+            with open(json_path, "rb") as f:
+                content = f.read()
         except Exception:
             continue
-        if not isinstance(obj, dict):
-            continue
-        sample_keys = [k for k in obj if isinstance(k, str) and k.startswith("sample")]
-        total += len(sample_keys) if sample_keys else 1
+        matches = _SAMPLE_KEY_RE.findall(content)
+        total += len(matches) if matches else 1
     return total
 
 

@@ -16,7 +16,7 @@ class RowNode(RelationNode):
     def get_left(self, child_node=None):
         if self.children[0] == child_node:
             return self.parent.get_left(self) if self.parent else None
-        return RowNode(self.children[:self.children.index(child_node) - 1])
+        return RowNode(self.children[:self.children.index(child_node)])
 
     def get_leftmost_node(self):
         return self.children[0].get_leftmost_node()
