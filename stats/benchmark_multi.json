@@ -289,17 +289,17 @@
       "mb_full": 722.1844,
       "mb_rep": 588.3072,
       "kb_per_sample": 114.0351,
-      "load_time_s": 2.8464,
-      "ms_per_sample": 0.5517
+      "load_time_s": 2.9014,
+      "ms_per_sample": 0.5624
     },
     "inktree_gz": {
-      "total_bytes": 6208849,
-      "mb": 6.2088,
-      "kb_per_sample": 1.2035,
-      "load_time_s": 1.0417,
-      "ms_per_sample": 0.2019,
-      "speedup": 2.732,
-      "size_ratio": 0.0106
+      "total_bytes": 13173509,
+      "mb": 13.1735,
+      "kb_per_sample": 2.5535,
+      "load_time_s": 1.3250,
+      "ms_per_sample": 0.2568,
+      "speedup": 2.190,
+      "size_ratio": 0.0224
     }
   },
   {
@@ -317,17 +317,17 @@
       "mb_full": 2063.6337,
       "mb_rep": 2063.6337,
       "kb_per_sample": 183.5646,
-      "load_time_s": 8.0598,
-      "ms_per_sample": 0.7169
+      "load_time_s": 8.2221,
+      "ms_per_sample": 0.7314
     },
     "inktree_gz": {
-      "total_bytes": 27965530,
-      "mb": 27.9655,
-      "kb_per_sample": 2.4876,
-      "load_time_s": 2.6693,
-      "ms_per_sample": 0.2374,
-      "speedup": 3.019,
-      "size_ratio": 0.0136
+      "total_bytes": 45691027,
+      "mb": 45.6910,
+      "kb_per_sample": 4.0643,
+      "load_time_s": 3.8083,
+      "ms_per_sample": 0.3388,
+      "speedup": 2.159,
+      "size_ratio": 0.0221
     }
   },
   {

@@ -24,33 +24,49 @@ from ink.nodes.symbol_node import SymbolNode
 from ink.nodes.row_node import RowNode
 
 
-def _extract_flat_xy(sample: dict) -> tuple[list, list]:
-    """Return flat (xs, ys) from word_stroke, points, or strokes."""
+def _extract_flat_xyt(sample: dict) -> tuple[list, list, list | None]:
+    """Return flat (xs, ys, ts) from word_stroke, points, or strokes.
+
+    ts is None when no timestamp field ('ts') is present.
+    DeepWriting stores x/y/ts as strings; IAMonDB stores them as floats.
+    """
     for key in ("word_stroke", "points"):
         ws = sample.get(key)
         if isinstance(ws, list) and ws and isinstance(ws[0], dict) and "x" in ws[0]:
             xs = [float(p["x"]) for p in ws if "x" in p]
             ys = [float(p["y"]) for p in ws if "y" in p]
-            return xs, ys
+            ts = [float(p["ts"]) for p in ws if "ts" in p] if any("ts" in p for p in ws) else None
+            if ts and len(ts) != len(xs):
+                ts = None
+            return xs, ys, ts
 
     ws = sample.get("strokes")
     if isinstance(ws, list):
-        xs, ys = [], []
+        xs, ys, ts = [], [], []
+        has_ts = False
         for stroke in ws:
             if isinstance(stroke, list):
                 for p in stroke:
                     if isinstance(p, dict) and "x" in p and "y" in p:
                         xs.append(float(p["x"]))
                         ys.append(float(p["y"]))
+                        if "ts" in p:
+                            ts.append(float(p["ts"]))
+                            has_ts = True
         if xs:
-            return xs, ys
+            return xs, ys, (ts if has_ts and len(ts) == len(xs) else None)
 
-    return [], []
+    return [], [], None
+
+
+def _extract_flat_xy(sample: dict) -> tuple[list, list]:
+    xs, ys, _ = _extract_flat_xyt(sample)
+    return xs, ys
 
 
 def _sample_to_row_node(sample: dict) -> RowNode | None:
     """Convert one JSON sample dict to a RowNode, or None if unparseable."""
-    xs, ys = _extract_flat_xy(sample)
+    xs, ys, ts = _extract_flat_xyt(sample)
     if not xs:
         return None
 
@@ -71,14 +87,17 @@ def _sample_to_row_node(sample: dict) -> RowNode | None:
                 ranges = ch_obj.get("ranges", [])
                 traces = []
                 for rng in ranges:
-                    rng_xs, rng_ys = [], []
+                    rng_xs, rng_ys, rng_ts = [], [], []
                     for idx in rng:
                         i = int(idx)
                         if 0 <= i < n_pts:
                             rng_xs.append(xs[i])
                             rng_ys.append(ys[i])
+                            if ts is not None:
+                                rng_ts.append(ts[i])
                     if rng_xs:
-                        traces.append(Trace(rng_xs, rng_ys, inkml_id=trace_id))
+                        t_arg = rng_ts if rng_ts else None
+                        traces.append(Trace(rng_xs, rng_ys, t=t_arg, inkml_id=trace_id))
                         trace_id += 1
                 if traces:
                     tg = TraceGroup(traces=traces, label=ch)
@@ -101,8 +120,9 @@ def _sample_to_row_node(sample: dict) -> RowNode | None:
             if s > e:
                 continue
             ch = seg.get("char", seg.get("c", "")) or ""
+            t_arg = ts[s : e + 1] if ts is not None else None
             tg = TraceGroup(
-                traces=[Trace(xs[s : e + 1], ys[s : e + 1], inkml_id=trace_id)],
+                traces=[Trace(xs[s : e + 1], ys[s : e + 1], t=t_arg, inkml_id=trace_id)],
                 label=ch,
             )
             trace_id += 1
