@@ -49,3 +49,12 @@ stats/crohme2023_test_benchmark.*
 stats/crohme2023_test_stats.*
 stats/inkml_phase_breakdown.json
 plots/
+
+# Private proposals (not for public release)
+proposals/
+
+# Deprecated helper scripts (superseded by main loaders)
+datasets/helper_functions_deprecated/
+
+# Legacy single-dataset benchmark (superseded by benchmark_multi.py)
+scripts/benchmark.py

@@ -207,7 +207,7 @@ Loaders expect datasets at the following locations (relative to project root). D
 ```bibtex
 @inproceedings{inktree2026,
   title     = {InkTree: A Unified Representation of Structured Online Ink},
-  author    = {Anonymous Authors},
+  author    = {Seitz, Jakob},
   booktitle = {Proceedings of ICDAR 2026},
   year      = {2026}
 }
