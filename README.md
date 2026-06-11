@@ -4,6 +4,10 @@
 
 Reference implementation for the ICDAR 2026 paper. InkTree is a lightweight, ML-oriented format for structured online handwriting that unifies digital ink, structural annotations, and spatial relations into a single self-describing hierarchical object.
 
+![InkTree showcase: segmentation and relations across heterogeneous sources](assets/showcase.png)
+
+*Converted InkTree samples from three structurally different source formats — CROHME formulas (InkML), DeepWriting cursive words (JSON), Detexify symbols (SQL dump). Colors distinguish trace groups (segmentation); labeled dark arrows show semantic relations (`numer`, `denom`, `sup`, `inner`, ...); light gray arrows show reading order within rows. Generated with `scripts/make_showcase.py`.*
+
 ---
 
 ## Motivation
@@ -92,6 +96,8 @@ scripts/
   plot_inktree.py         Visualize an InkTree file
   plot_inkml.py           Visualize an InkML file
   plot_compare.py         Side-by-side InkML vs InkTree comparison
+  review_inktree.py       Visual QA grids per dataset (--relations: segmentation + arrows)
+  make_showcase.py        Generate the showcase figure (assets/showcase.png)
 stats/            Benchmark results (JSON + text summary)
 ```
 
@@ -196,6 +202,11 @@ python scripts/benchmark_variance.py
 python scripts/plot_inktree.py --file data/inktree/crohme_2023test.inktree.jsonl.gz --index 0
 python scripts/plot_inkml.py --file path/to/sample.inkml
 python scripts/plot_compare.py --inkml path/to/sample.inkml
+
+# Visual QA grids over random samples of every converted dataset:
+python scripts/review_inktree.py --n 12
+# Segmentation colors + relation arrows (as in the showcase figure above):
+python scripts/review_inktree.py --relations --datasets crohme_2023test
 ```
 
 ---
