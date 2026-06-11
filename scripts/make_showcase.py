@@ -118,7 +118,7 @@ def main():
     rows = [
         ("Formulas", [
             ("CROHME", "crohme_2023test.inktree.jsonl.gz", 65, None),
-            ("CROHME+", "crohmeplus_synthetic.inktree.jsonl.gz", 249, None),
+            ("CROHME+", "crohmeplus_synthetic.inktree.jsonl.gz", 26, None),
             ("MathWriting+", "mwplus_test.inktree.jsonl.gz", 15, None),
             ("MathWriting+ Synth.", "mwplus_synthetic.inktree.jsonl.gz", 99, None),
         ], 0.05),
@@ -155,7 +155,7 @@ def main():
                 label = effective_label(graph, label)
             plot_sample_relations(graph, label, ax, fontsize=7)
             ax.margins(margin)
-            ax.text(0.5, -0.04, tag, transform=ax.transAxes,
+            ax.text(0.5, -0.12, tag, transform=ax.transAxes,
                     fontsize=6, color="0.45", ha="center", va="top")
         axes[r][0].set_ylabel(row_title, fontsize=8)
         axes[r][0].axis("on")

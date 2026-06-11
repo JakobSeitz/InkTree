@@ -15,6 +15,7 @@ Usage (from project root):
 import argparse
 import gzip
 import json
+import math
 import random
 import sys
 from pathlib import Path
@@ -84,15 +85,36 @@ def subtree_centroid(node):
     return sum(xs) / len(xs), sum(ys) / len(ys)
 
 
-def _draw_arrow(ax, src, dst, label, color="#444444"):
+def _draw_arrow(ax, src, dst, label, color="#444444", curve=False):
+    x0, y0 = src
+    x1, y1 = dst
+    dx, dy = x1 - x0, y1 - y0
+    dist = math.hypot(dx, dy)
+    if dist == 0:
+        return
+    # Panel scale, used to keep curvature and label offsets visible even for
+    # very short arrows (otherwise the label box completely covers the arrow).
+    bb = ax.dataLim
+    diag = math.hypot(bb.width, bb.height) or 1.0
+    rad = 0.0
+    if curve:
+        rad = 0.25 if dist > 0.2 * diag else 0.5
     ax.annotate(
         "", xy=dst, xytext=src,
-        arrowprops=dict(arrowstyle="-|>", color=color, lw=1.1, shrinkA=8, shrinkB=8),
+        arrowprops=dict(arrowstyle="-|>", color=color, lw=1.0, shrinkA=2, shrinkB=4,
+                        connectionstyle=f"arc3,rad={rad}"),
     )
     if label:
-        mx, my = (src[0] + dst[0]) / 2, (src[1] + dst[1]) / 2
-        ax.text(mx, my, label, fontsize=5.5, color=color, ha="center", va="center",
-                bbox=dict(boxstyle="round,pad=0.15", fc="white", ec=color, lw=0.4, alpha=0.85))
+        # Place the label beside the arc apex (perpendicular to the arrow),
+        # never on top of the arrow itself. arc3's control point sits at
+        # mid + rad*(dy,-dx) in display coords; with the inverted y-axis this
+        # is (-dy, dx) in data coords.
+        nx, ny = -dy / dist, dx / dist
+        mx, my = (x0 + x1) / 2, (y0 + y1) / 2
+        off = rad * 0.5 * dist + 0.045 * diag
+        ax.text(mx + nx * off, my + ny * off, label, fontsize=5.5, color=color,
+                ha="center", va="center",
+                bbox=dict(boxstyle="round,pad=0.12", fc="white", ec=color, lw=0.4, alpha=0.9))
 
 
 def draw_relations(node, ax):
@@ -117,7 +139,7 @@ def draw_relations(node, ax):
                 if child_idx < len(node.children) and node.children[child_idx] is not None:
                     dst = subtree_centroid(node.children[child_idx])
                     if dst is not None and dst != src:
-                        _draw_arrow(ax, src, dst, rel_label)
+                        _draw_arrow(ax, src, dst, rel_label, curve=True)
 
     elif class_name in ("RowNode", "LineNode"):
         # reading order / line order: light arrows between consecutive children
