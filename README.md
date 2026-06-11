@@ -70,7 +70,7 @@ The `type` field is an **open identifier**, and the table below is the set of **
 
 Notes on `matrix`: delimiters (parentheses, brackets) are sibling `sym` nodes in the surrounding `row`, matching how they appear in the ink. Constructs like binomial coefficients need no dedicated type — `\binom{n}{k}` is a 2×1 `matrix` flanked by parenthesis symbols.
 
-**Extending the format** is a one-line decision, not a schema change: pick a new `type` string and document its semantic child keys. Examples of plausible user-defined types: `word` / `sentence` (text lines with token labels), `table` (header/body cell roles), `axis` / `plot` (coordinate systems with curve strokes), `bond` / `ring` (chemical structures), `arrow` / `box` (diagrams). Older decoders treat unknown types as generic containers and keep all strokes accessible.
+**Extending the format** is a one-line decision, not a schema change: pick a new `type` string and document its semantic child keys. Examples of plausible user-defined types: `word` / `sentence` (text lines with token labels), `table` (header/body cell roles), `axis` / `plot` (coordinate systems with curve strokes), `bond` / `ring` (chemical structures), `arrow` / `box` (diagrams). Older decoders treat unknown types as generic containers and keep all strokes accessible. Want your type in the default set? See [CONTRIBUTING.md](CONTRIBUTING.md) for the proposal process.
 
 ---
 
@@ -237,6 +237,12 @@ Loaders expect datasets at the following locations (relative to project root). D
   year      = {2026}
 }
 ```
+
+---
+
+## Contributing
+
+Contributions are welcome — code, dataset loaders, and especially proposals for new node types (the format is meant to evolve user-driven). See [CONTRIBUTING.md](CONTRIBUTING.md). Bugs and questions → [Issues](../../issues), format-design conversations → [Discussions](../../discussions).
 
 ---
 
