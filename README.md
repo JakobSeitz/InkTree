@@ -71,21 +71,23 @@ The `type` field is an open identifier: unknown types decode gracefully via a ge
 inktree/          Core library: encode, decode, I/O, schema
 ink/              Trace and node infrastructure (InkML parser, relation nodes)
 datasets/         Dataset loaders
-  crohme.py         CROHME file manager
-  mathwriting.py    MathWriting+ file manager
-  json_loader.py    JSON-folder loader (DeepWriting, IAMonDB)
-  detexify_loader.py
-  unipen_loader.py
-  jsonl_loader.py   Legacy JSONL loader
+  crohme.py              CROHME file manager
+  mathwriting.py         MathWriting+ file manager
+  json_loader.py         JSON-folder loader (DeepWriting, IAMonDB)
+  deepwriting_loader.py  DeepWriting native .npz loader
+  iamondb_loader.py      IAMonDB native page-level InkML loader
+  detexify_loader.py     Detexify SQL-dump loader
+  unipen_loader.py       Unipen .tgz streaming loader
+  jsonl_loader.py        Legacy JSONL loader
 scripts/
   convert_to_inktree.py   Convert InkML splits → InkTree
   benchmark_multi.py      Full multi-dataset benchmark
+  benchmark_variance.py   Multi-run variance / reproducibility benchmark
   dataset_stats.py        Dataset structure statistics
   plot_inktree.py         Visualize an InkTree file
   plot_inkml.py           Visualize an InkML file
   plot_compare.py         Side-by-side InkML vs InkTree comparison
 stats/            Benchmark results (JSON + text summary)
-plots/            Comparison plots (InkML vs InkTree rendering)
 ```
 
 ---
@@ -98,28 +100,32 @@ Evaluated across 15 configurations spanning 7 dataset families. Source sizes and
 
 | Dataset | N | Source MB | ms/s | InkTree MB | ms/s | Size | Speed |
 |---|---|---|---|---|---|---|---|
-| CROHME 2023 Test | 2,300 | 28.95 | 0.572 | 8.06 | 0.233 | 27.8% | 2.5× |
-| CROHME 2019 Test | 1,199 | 9.27 | 0.505 | 2.21 | 0.154 | 23.9% | 3.3× |
-| CROHME 2016 Val | 1,147 | 9.28 | 0.472 | 2.32 | 0.164 | 25.0% | 2.9× |
-| CROHME 2023 Val | 555 | 7.23 | 0.413 | 2.01 | 0.324 | 27.8% | 1.3× |
-| CROHME Real Train | 12,010 | 113.04 | 0.465 | 28.16 | 0.222 | 24.9% | 2.1× |
-| CROHME+ Synth.* | 2,000 | 9.46 | 0.336 | 2.19 | 0.098 | 23.2% | 3.4× |
-| MW+ Test | 5,739 | 55.52 | 0.536 | 17.61 | 0.208 | 31.7% | 2.6× |
-| MW+ Val | 9,336 | 85.52 | 0.543 | 26.21 | 0.186 | 30.6% | 2.9× |
-| MW+ Symbols | 6,276 | 11.82 | 0.076 | 2.39 | 0.017 | 20.2% | 4.4× |
-| MW+ Train* | 2,000 | 20.09 | 0.869 | 6.06 | 0.225 | 30.2% | 3.9× |
-| MW+ Synthetic* | 2,000 | 29.81 | 0.741 | 8.04 | 0.273 | 27.0% | 2.7× |
+| CROHME 2023 Test | 2,300 | 28.95 | 0.491 | 8.06 | 0.232 | 27.8% | 2.1× |
+| CROHME 2019 Test | 1,199 | 9.27 | 0.504 | 2.21 | 0.155 | 23.9% | 3.2× |
+| CROHME 2016 Val | 1,147 | 9.28 | 0.448 | 2.32 | 0.169 | 25.0% | 2.7× |
+| CROHME 2023 Val | 555 | 7.23 | 0.398 | 2.01 | 0.339 | 27.8% | 1.2× |
+| CROHME Real Train | 12,010 | 113.04 | 0.419 | 28.16 | 0.219 | 24.9% | 1.9× |
+| CROHME+ Synth.* | 2,000 | 9.46 | 0.214 | 2.19 | 0.063 | 23.2% | 3.4× |
+| MW+ Test | 5,739 | 55.52 | 0.583 | 17.61 | 0.242 | 31.7% | 2.4× |
+| MW+ Val | 9,336 | 85.52 | 0.410 | 26.21 | 0.185 | 30.6% | 2.2× |
+| MW+ Symbols | 6,276 | 11.82 | 0.190 | 2.39 | 0.020 | 20.2% | 9.5× |
+| MW+ Train* | 2,000 | 20.26 | 0.372 | 6.09 | 0.169 | 30.1% | 2.2× |
+| MW+ Synthetic* | 2,000 | 29.19 | 0.570 | 7.88 | 0.280 | 27.0% | 2.0× |
 
 ### Other source formats
 
 | Dataset | Fmt | N | Source MB | ms/s | InkTree MB | ms/s | Size | Speed |
 |---|---|---|---|---|---|---|---|---|
-| DeepWriting† | .json | 5,159 | 722.2 | 0.506 | 6.2 | 0.270 | 0.9%† | 1.9× |
-| IAMonDB† | .json | 11,242 | 2,063.6 | 0.700 | 28.0 | 0.267 | 1.4%† | 2.6× |
-| Detexify† | .sql | 210,454 | 1,058.2 | 0.545 | 78.1 | 0.030 | 7.4% | 18.4× |
-| Unipen† | .tgz | 79,452 | 155.8 | 0.149 | 9.3 | 0.014 | 5.9% | 10.3× |
+| DeepWriting† | .json | 5,159 | 588.3 | 0.562 | 13.2 | 0.257 | 2.2% | 2.2× |
+| IAMonDB† | .json | 11,242 | 2,063.6 | 0.731 | 45.7 | 0.339 | 2.2% | 2.2× |
+| Detexify† | .sql | 210,454 | 1,058.2 | 0.547 | 181.6 | 0.050 | 17.2% | 10.9× |
+| Unipen† | .tgz | 79,452 | 57.1 | 0.147 | 9.3 | 0.014 | 16.2% | 10.3× |
 
-\* Random sample from larger split. † Full split. Size = InkTree / source (lower is better). Source MB for DeepWriting and Unipen is the full archive/folder size; the paper normalizes these to the matched sample universe (588 MB and 57 MB respectively). JSON source sizes (DeepWriting, IAMonDB) include metadata fields beyond stroke data not stored in InkTree.
+\* Random sample from larger split. † Full converted split. Size = InkTree / source (lower is better). Source MB for DeepWriting and Unipen is the matched-sample equivalent of the full archive/folder (722 MB and 156 MB respectively). JSON source sizes (DeepWriting, IAMonDB) include metadata fields beyond stroke data not stored in InkTree; InkTree retains per-point timestamps where the source provides them (MathWriting+, Detexify, DeepWriting, IAMonDB).
+
+### Reproducibility
+
+Seven representative configurations were repeated five times each (three for Detexify) to measure run-to-run stability; the coefficient of variation of the speedup ratio stays below 14% (median 7.0%). See `stats/benchmark_variance.json` and `scripts/benchmark_variance.py`.
 
 ---
 
@@ -174,6 +180,9 @@ graphs = load_json_dataset("data/Deepwriting Dataset/")
 ```bash
 python scripts/benchmark_multi.py
 # Outputs: stats/benchmark_multi.json, stats/benchmark_multi.txt
+
+python scripts/benchmark_variance.py
+# Multi-run variance analysis: stats/benchmark_variance.json
 ```
 
 ### Visualize
@@ -212,3 +221,9 @@ Loaders expect datasets at the following locations (relative to project root). D
   year      = {2026}
 }
 ```
+
+---
+
+## License
+
+This code is released under the [MIT License](LICENSE). The datasets referenced above are subject to their respective original licenses and are not distributed with this repository.
