@@ -6,7 +6,7 @@ Reference implementation for the ICDAR 2026 paper. InkTree is a lightweight, ML-
 
 ![InkTree showcase: segmentation and relations across heterogeneous sources](assets/showcase.png)
 
-*Converted InkTree samples from three structurally different source formats — CROHME formulas (InkML), DeepWriting cursive words (JSON), Detexify symbols (SQL dump). Colors distinguish trace groups (segmentation); labeled dark arrows show semantic relations (`numer`, `denom`, `sup`, `inner`, ...); light gray arrows show reading order within rows. Generated with `scripts/make_showcase.py`.*
+*Converted InkTree samples across content types and source formats — math formulas (CROHME, CROHME+, MathWriting+; InkML), text lines (DeepWriting, IAMonDB; JSON), isolated symbols (Detexify; SQL dump / Unipen; .tgz archive). Colors distinguish trace groups (segmentation); labeled dark arrows show semantic relations (`numer`, `denom`, `sup`, `inner`, ...); light gray arrows show reading order within rows. Generated with `scripts/make_showcase.py`.*
 
 ---
 
