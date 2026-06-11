@@ -45,6 +45,8 @@ Each sample is one JSON object stored in a gzip-compressed JSONL file (`.inktree
 
 ### Node Types
 
+The `type` field is an **open identifier**, and the table below is the set of **default node types** shipped with this reference implementation — not a closed list. Unknown types decode gracefully via a generic fallback, so anyone can introduce new node types without a format version bump or coordination with this repository. The format is intended to evolve user-driven: while the defaults focus on mathematical expressions, the same mechanism models any structured ink — tables, coordinate systems and plots, words and sentences, drawings and diagrams, chemical formulas, music notation, and beyond.
+
 | Type | Description | Semantic children |
 |---|---|---|
 | `sym` | Symbol (leaf) | `label`, `strokes` |
@@ -57,11 +59,14 @@ Each sample is one JSON object stored in a gzip-compressed JSONL file (`.inktree
 | `root` | N-th root | `inner`, `index`, `strokes` |
 | `under` | Underscript | `base`, `under` |
 | `underover` | Over + underscript | `base`, `under`, `over` |
+| `matrix` | Rectangular grid (matrix / tabular layout) | `cells: [[node, ...], ...]` (2D row-major; grid position implied by structure) |
 | `any` | Undefined relation | `children: [...]` |
 | `noisy` | Noise/artifact | `children: [...]` |
 | `line` | Multi-line container (groups rows into a multi-line expression, e.g. step-by-step calculation) | `children: [...]` (each child is one line, typically a `row`) |
 
-The `type` field is an open identifier: unknown types decode gracefully via a generic fallback, allowing schema extension without a version bump.
+Notes on `matrix`: delimiters (parentheses, brackets) are sibling `sym` nodes in the surrounding `row`, matching how they appear in the ink. Constructs like binomial coefficients need no dedicated type — `\binom{n}{k}` is a 2×1 `matrix` flanked by parenthesis symbols.
+
+**Extending the format** is a one-line decision, not a schema change: pick a new `type` string and document its semantic child keys. Examples of plausible user-defined types: `word` / `sentence` (text lines with token labels), `table` (header/body cell roles), `axis` / `plot` (coordinate systems with curve strokes), `bond` / `ring` (chemical structures), `arrow` / `box` (diagrams). Older decoders treat unknown types as generic containers and keep all strokes accessible.
 
 ---
 

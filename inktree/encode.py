@@ -121,6 +121,17 @@ def _encode_node(node) -> dict:
             "over":  _encode_node(ch[2]) if len(ch) > 2 and ch[2] is not None else None,
         }
 
+    if class_name == "MatrixNode":
+        # children = cells in row-major order, n_cols defines the grid shape;
+        # serialized as a 2D "cells" array so grid position is implied by structure
+        return {
+            "type": "matrix",
+            "cells": [
+                [_encode_node(c) if c is not None else None for c in row]
+                for row in node.rows()
+            ],
+        }
+
     # RowNode, AnyRelationNode, NoisyNode, LineNode, fallback: generic children list
     d = {"type": short}
     if node.children:

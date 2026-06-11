@@ -16,6 +16,7 @@ Node type mapping (InkML/MathML class name → InkTree short identifier):
   AnyRelationNode → "any"
   NoisyNode       → "noisy"
   LineNode        → "line"
+  MatrixNode      → "matrix"
 
 Child key semantics per node type:
 
@@ -31,7 +32,10 @@ Child key semantics per node type:
   underover: {"base": node, "under": node, "over": node}
   any:       {"children": [...]}
   noisy:     {"children": [...]}
-  line:      {}
+  line:      {"children": [...]}
+  matrix:    {"cells": [[node, ...], ...]}   # 2D row-major grid; position implied
+                                             # by structure, delimiters are sibling
+                                             # symbols in the surrounding row
 
 Top-level sample structure:
   {
@@ -58,6 +62,7 @@ NODE_TYPE_TO_SHORT = {
     "AnyRelationNode": "any",
     "NoisyNode":       "noisy",
     "LineNode":        "line",
+    "MatrixNode":      "matrix",
     # fallback
     "RelationNode":    "any",
     "PlaceholderNode": "any",

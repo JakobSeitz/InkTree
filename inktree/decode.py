@@ -19,6 +19,7 @@ from ink.nodes.under_over_node import UnderOverNode
 from ink.nodes.any_relation_node import AnyRelationNode
 from ink.nodes.noisy_node import NoisyNode
 from ink.nodes.lines_node import LineNode
+from ink.nodes.matrix_node import MatrixNode
 from ink.traces.trace import Trace
 from ink.traces.trace_group import TraceGroup
 
@@ -117,6 +118,18 @@ def _decode_node(d: dict, parent=None) -> RelationNode:
     if node_type == "line":
         node = LineNode(parent=parent)
         node.children = [_decode_node(c, parent=node) for c in d.get("children", [])]
+        return node
+
+    if node_type == "matrix":
+        cells = d.get("cells", [])
+        n_cols = max((len(row) for row in cells), default=0)
+        node = MatrixNode(n_cols=n_cols, parent=parent)
+        children = []
+        for row in cells:
+            decoded = [_decode_node(c, parent=node) for c in row]
+            decoded += [None] * (n_cols - len(decoded))  # pad ragged rows
+            children.extend(decoded)
+        node.children = children
         return node
 
     # fallback: any / unknown
