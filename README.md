@@ -173,7 +173,7 @@ from ink.graph import get_relation_graphs_from_files
 from inktree import save_inktree
 
 files = CrohmeFileManager.get_2023test_files()
-graphs = get_relation_graphs_from_files(files, keep_undefined=True, interpolate=False)
+graphs = get_relation_graphs_from_files(files, keep_undefined=True)
 save_inktree(graphs, "output.inktree.jsonl.gz", labels=[g.latex() for g in graphs])
 ```
 

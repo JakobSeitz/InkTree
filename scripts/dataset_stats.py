@@ -96,7 +96,7 @@ def _mean(lst):
 
 print("Loading CROHME 2023 test graphs from InkML ...")
 files = CrohmeFileManager.get_2023test_files()
-graphs = get_relation_graphs_from_files(files, keep_undefined=True, interpolate=False)
+graphs = get_relation_graphs_from_files(files, keep_undefined=True)
 print(f"Loaded {len(graphs)} graphs.")
 
 stats = collect_stats(graphs)

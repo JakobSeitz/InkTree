@@ -64,9 +64,9 @@ def run_inkml(name: str, files: list, inktree_path: Path, n_runs: int) -> dict:
     src_times, it_times = [], []
     n = 0
     for i in range(n_runs):
-        t = _time_fn(lambda: get_relation_graphs_from_files(files, keep_undefined=True, interpolate=False))
+        t = _time_fn(lambda: get_relation_graphs_from_files(files, keep_undefined=True))
         src_times.append(t)
-        graphs = get_relation_graphs_from_files(files, keep_undefined=True, interpolate=False)
+        graphs = get_relation_graphs_from_files(files, keep_undefined=True)
         n = len(graphs)
         t = _time_fn(lambda: load_inktree_graphs(inktree_path))
         it_times.append(t)

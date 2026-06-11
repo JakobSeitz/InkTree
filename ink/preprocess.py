@@ -54,28 +54,6 @@ class PreProcessor:
         return sum([trace_group.get_height() for trace_group in trace_groups]) / len(trace_groups)
 
     @staticmethod
-    def preprocess_symbol_trace_groups(trace_groups):
-        trace_groups = PreProcessor.remove_empty_trace_groups(trace_groups)
-        trace_groups = PreProcessor.remove_unallowed_trace_groups(trace_groups)
-        [PreProcessor.fit_trace_group_to_one_times_one_square(trace_group) for trace_group in trace_groups]
-        PreProcessor.interpolate_trace_groups(trace_groups, target_length=20)
-
-        return trace_groups
-
-    @staticmethod
-    def preprocess_single_trace_group(trace_group):
-        PreProcessor.normalize(trace_group)
-        trace_group.interpolate(target_point_number=20)
-        return trace_group
-
-    @staticmethod
-    def create_preprocessed_formula_trace_group(trace_groups):
-        trace_groups = PreProcessor.remove_empty_trace_groups(trace_groups)
-        PreProcessor.scale_formula(trace_groups)
-        PreProcessor.interpolate_trace_groups(trace_groups, target_length=20)
-        return trace_groups
-
-    @staticmethod
     def remove_empty_trace_groups(trace_groups):
         for trace_group in trace_groups:
             trace_group.remove_empty_traces()
@@ -84,10 +62,6 @@ class PreProcessor:
     @staticmethod
     def remove_unallowed_trace_groups(trace_groups):
         return [trace_group for trace_group in trace_groups if PreProcessor.is_symbol_allowed(trace_group.label)]
-
-    @staticmethod
-    def interpolate_trace_groups(trace_groups: list[TraceGroup], target_length=20):
-        [trace_group.interpolate(target_length) for trace_group in trace_groups]
 
     @staticmethod
     def is_symbol_allowed(latex_str):

@@ -134,7 +134,7 @@ def benchmark_inkml_dataset(
 
     # Parse InkML → graphs
     t0 = time.perf_counter()
-    graphs = get_relation_graphs_from_files(files, keep_undefined=True, interpolate=False)
+    graphs = get_relation_graphs_from_files(files, keep_undefined=True)
     t_source = time.perf_counter() - t0
     n = len(graphs)
     source_bytes = _inkml_dir_size(files)

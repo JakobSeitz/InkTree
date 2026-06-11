@@ -120,9 +120,6 @@ class TraceGroup:
                 return trace
         return None
 
-    def interpolate(self, target_length):
-        [trace.interpolate(target_length) for trace in self.traces]
-
     def copy(self):
         new_group = TraceGroup([trace.copy() for trace in self.traces], self.label, self.xml_id, self.math_annotation)
         if self.prediction_logits is not None:
